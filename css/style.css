@@ -1,0 +1,182 @@
+/* GENERALI ----------------------------------------------------------------------------- */
+:root {
+    --colore-bianco: #fff;
+    --colore-nero: #111;
+    --colore-principale: #3943b7;
+    --colore-principale-hover: #001e89;
+    --colore-principale-active: #636ccf;
+    --colore-testo: #484554;
+    --colore-verde-scuro: #006741;
+    --colore-verde-fluo: #00f381;
+    --colore-ombra: rgba(0, 0, 0, 0.2);
+}
+
+body {
+    min-height: 100vh;
+}
+
+.colore-principale-sfondo {
+    background-color: var(--colore-principale) !important;
+}
+
+.colore-principale-testo {
+    color: var(--colore-principale) !important;
+}
+
+.colore-testo {
+    color: var(--colore-testo) !important;
+}
+
+.logo-tbt {
+    display: flex;
+    align-items: center;
+}
+.logo-tbt > svg {
+    height: 40px;
+    width: 40px;
+    margin: 0 20px;
+}
+
+.nav-item:hover {
+    text-decoration: underline solid #fff;
+    text-underline-offset: 0.5rem;
+}
+
+.navbar .active {
+    text-decoration: underline solid #fff;
+    text-underline-offset: 0.5rem;
+}
+
+.briciole {
+    text-align: end;
+}
+
+.ol {
+    text-align: right;
+}
+
+.footer-personalizzazione {
+    /* position: absolute; */
+    /* bottom: 0; */
+    font-size: 0.9rem;
+    padding-bottom: 2rem;
+}
+
+.bottone-submit-form {
+    background-color: var(--colore-principale);
+    border: none;
+}
+.bottone-submit-form:hover {
+    background-color: var(--colore-principale-hover);
+}
+.bottone-submit-form:active {
+    background-color: var(--colore-principale-active);
+}
+
+/* HOME ----------------------------------------------------------------------------- */
+
+.body-home-sfondo {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../immagini/torino-con-mole.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.contenuto-principale-home {
+    /* border: 2px solid red; */
+    height: 60vh;
+    padding-top: 100px;
+}
+
+/* * {
+    border: 2px solid red;
+} */
+
+.contenuto-principale-home-sfondo {
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+}
+
+.contenuto-principale-home h1 {
+    color: white;
+    letter-spacing: 0.15rem;
+    text-align: end;
+    font-size: 4rem;
+}
+.contenuto-principale-home h1 span {
+    font-size: 150%;
+    font-weight: 900;
+}
+
+.contenuto-principale-home p {
+    color: white;
+    font-size: 1.1rem;
+    text-align: end;
+}
+
+.container-bottoni-home {
+    display: flex;
+    justify-content: end;
+    gap: 30px;
+}
+
+.contenuto-principale-home .btn-primary {
+    background-color: var(--colore-principale);
+    border: none;
+}
+.contenuto-principale-home .btn-primary:hover {
+    background-color: var(--colore-principale-hover);
+}
+.contenuto-principale-home .btn-primary:active {
+    background-color: var(--colore-principale-active);
+}
+
+.contenuto-principale-home .btn-outline-secondary {
+    border-color: var(--colore-bianco);
+    color: var(--colore-bianco);
+}
+
+.contenuto-principale-home .btn-outline-secondary:active {
+    background-color: var(--colore-testo);
+}
+
+.footer-personalizzazione-home {
+    color: white;
+}
+
+.footer-personalizzazione-home a {
+    color: white;
+}
+
+/* LINEE e ORARI -------------------------------------------------------------------- */
+
+.tabella-personalizzazione {
+    color: var(--colore-testo);
+}
+
+.tabella-personalizzazione th,
+.tabella-personalizzazione td {
+    color: var(--colore-testo);
+}
+
+/* LINEA TURISTICA -------------------------------------------------------------------- */
+
+.link-per-form-linea-turistica {
+    border: 2px solid var(--colore-principale) !important;
+    padding: 0.8rem 2rem;
+    color: var(--colore-principale);
+    text-decoration: underline solid var(--colore-principale) 1.5px;
+    text-underline-offset: 0.1rem;
+    font-size: 1.2rem;
+    background-color: white;
+    border-radius: 7px;
+    font-weight: 500 !important;
+}
+.link-per-form-linea-turistica:hover {
+    background-color: var(--colore-principale);
+    color: #fff;
+    text-decoration: underline solid #fff;
+}
+.link-per-form-linea-turistica:active {
+    background-color: var(--colore-principale-active);
+}
