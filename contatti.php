@@ -1,3 +1,8 @@
+<?php
+session_start();
+include './utilities/accountButtons.php';
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -82,6 +87,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="contatti.php">Contattaci</a>
                     </li>
+                    <?= topHeader() ?>
                 </ul>
             </div>
         </div>

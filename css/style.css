@@ -42,6 +42,28 @@ body {
     text-underline-offset: 0.5rem;
 }
 
+.nav-button-registrati,
+.nav-button-accedi,
+.nav-button-esci,
+.nav-button-account {
+    padding: 0 0;
+}
+
+.nav-button-registrati *,
+.nav-button-accedi *,
+.nav-button-esci *,
+.nav-button-account * {
+    color: white !important;
+}
+
+.nav-button-accedi {
+    margin-left: 130%;
+}
+
+.nav-button-registrati {
+    margin-left: 20px;
+}
+
 .navbar .active {
     text-decoration: underline solid #fff;
     text-underline-offset: 0.5rem;

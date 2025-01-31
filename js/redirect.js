@@ -23,7 +23,7 @@ function mostraMessaggioErrore() {
             alertDiv.classList.add("hide");
             setTimeout(() => {
                 alertDiv.remove();
-                document.body.style.overflow = ""; // Ripristina lo scroll una volta rimosso l'alert
+                document.body.style.overflow = ""; // ripristina lo scroll una volta rimosso l'alert
             }, 900);
         }, 5000);
 
@@ -32,11 +32,11 @@ function mostraMessaggioErrore() {
             alertDiv.classList.add("hide");
             setTimeout(() => {
                 alertDiv.remove();
-                document.body.style.overflow = ""; // Ripristina lo scroll una volta rimosso l'alert
+                document.body.style.overflow = ""; // ripristina lo scroll una volta rimosso l'alert
             }, 900);
         });
 
-        // Nascondi le barre di scorrimento laterali e inferiori del browser quando l'alert è visibile
+        // nascondi le barre di scorrimento laterali e inferiori del browser quando l'alert è visibile
         document.body.style.overflow = "hidden";
     }
 }
