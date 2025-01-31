@@ -28,7 +28,7 @@ function controllaForm(e) {
     if (!form.checkValidity()) {
         e.preventDefault();
     } else {
-        window.location.href = "index.html?m_r=Prenotazione avvenuta con successo!";
+        window.location.href = "index.php?m_r=Prenotazione avvenuta con successo!";
     }
 
     form.classList.add("was-validated");

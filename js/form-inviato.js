@@ -2,6 +2,6 @@ window.onload = reindirizza;
 
 function reindirizza() {
     setTimeout(function () {
-        window.location = "index.html";
+        window.location = "index.php";
     }, 5000);
 }
