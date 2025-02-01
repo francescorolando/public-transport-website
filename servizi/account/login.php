@@ -14,7 +14,7 @@ include './utilities/accountButtons.php';
     <meta name="description" content="" />
 
     <!-- FAVICON -->
-    <link rel="icon" type="image/x-icon" href="./src/immagini/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="./../src/immagini/favicon.ico" />
 
     <!-- Bootstrap CSS -->
     <link

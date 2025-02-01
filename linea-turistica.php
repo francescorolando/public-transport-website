@@ -14,7 +14,7 @@ include './utilities/accountButtons.php';
     <meta name="description" content="" />
 
     <!-- FAVICON -->
-    <link rel="icon" type="image/x-icon" href="immagini/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="./src/immagini/favicon.ico" />
 
     <!-- Bootstrap CSS -->
     <link
@@ -24,7 +24,7 @@ include './utilities/accountButtons.php';
         crossorigin="anonymous" />
 
     <!-- CSS -->
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="./src/css/style.css" rel="stylesheet" type="text/css" />
 
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -363,7 +363,7 @@ include './utilities/accountButtons.php';
         crossorigin="anonymous"></script>
 
     <!-- JS -->
-    <script src="js/linea-turistica.js"></script>
+    <script src="src/js/linea-turistica.js"></script>
 </body>
 
 </html>

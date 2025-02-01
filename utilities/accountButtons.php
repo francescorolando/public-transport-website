@@ -7,7 +7,7 @@ function topHeader()
     {
         $topHeader = "
             <li class='nav-item nav-button-accedi'>
-                <a class='nav-link' href=''>Accedi</a>
+                <a class='nav-link' href='./servizi/account/login.php'>Accedi</a>
             </li>
             <li class='nav-item nav-button-registrati'>
                 <a class='nav-link' href=''>Registrati</a>
