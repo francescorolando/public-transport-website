@@ -10,20 +10,24 @@ function topHeader()
                 <a class='nav-link' href='./servizi/account/login.php'>Accedi</a>
             </li>
             <li class='nav-item nav-button-registrati'>
-                <a class='nav-link' href=''>Registrati</a>
+                <a class='nav-link' href='./servizi/account/registrazione.php'>Registrati</a>
             </li>
         ";
     }
     else
     {
-        $nome = $_SESSION['nome'];
+        /* $admin = "";
+        if ($_SESSION['admin'] == 1)
+        {
+            $admin = "<a class='nav-link' href=''>Admin</a>";
+        };
+        <li class='nav-item nav-button-admin'>
+            $admin
+        </li> */
 
         $topHeader = "
-            <li class='nav-item nav-button-accedi'>
-                <a class='nav-link' href=''>Account</a>
-            </li>
-            <li class='nav-item nav-button-registrati'>
-                <a class='nav-link' href=''>Esci</a>
+            <li class='nav-item nav-button-esci'>
+                <a class='nav-link' href='./servizi/account/logout_check.php'>Esci</a>
             </li>
         ";
     };

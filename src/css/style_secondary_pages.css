@@ -1,0 +1,24 @@
+:root {
+    --colore-bianco: #fff;
+    --colore-nero: #111;
+    --colore-principale: #3943b7;
+    --colore-principale-hover: #001e89;
+    --colore-principale-active: #636ccf;
+    --colore-testo: #484554;
+    --colore-verde-scuro: #006741;
+    --colore-verde-fluo: #00f381;
+    --colore-ombra: rgba(0, 0, 0, 0.2);
+}
+
+/* * {
+    border: 2px solid red;
+} */
+
+.titolo-sp {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.paragrafo-sp {
+    text-align: center;
+}

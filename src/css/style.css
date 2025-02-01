@@ -44,20 +44,22 @@ body {
 
 .nav-button-registrati,
 .nav-button-accedi,
-.nav-button-esci,
-.nav-button-account {
+.nav-button-esci {
     padding: 0 0;
 }
 
 .nav-button-registrati *,
 .nav-button-accedi *,
-.nav-button-esci *,
-.nav-button-account * {
+.nav-button-esci * {
     color: white !important;
 }
 
 .nav-button-accedi {
     margin-left: 130%;
+}
+
+.nav-button-esci {
+    margin-left: 190%;
 }
 
 .nav-button-registrati {

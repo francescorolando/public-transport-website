@@ -30,7 +30,6 @@ loginTRUE("Location: ../../index.php");
     <link href="./../../src/css/style.css" rel="stylesheet" type="text/css" />
     <link href="./../../src/css/style_secondary_pages.css" rel="stylesheet" type="text/css" />
 
-
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
@@ -139,45 +138,77 @@ loginTRUE("Location: ../../index.php");
 </head>
 
 <body>
-    <!-- CONTENUTO PRINCIPALE -->
-
     <!-- Alert container -->
     <div id="alert-container"></div>
 
+    <!-- CONTENUTO PRINCIPALE -->
     <div class="container">
 
-        <div class="row justify-content-center mb-5" id="container-form-login">
-            <div class="col col-md-5">
-                <h2 class="colore-principale-testo titolo-sp">Bentornato!</h2>
-                <p class="colore-testo paragrafo-sp">Compila i campi di seguito e accedi al tuo profilo.</p>
+        <div class="row justify-content-center mb-5" id="container-form-registrazione">
+            <div class="col col-md-6">
+                <h2 class="colore-principale-testo titolo-sp">Benvenuto!</h2>
+                <p class="colore-testo paragrafo-sp">Compila i campi di seguito e crea il tuo profilo.</p>
                 <form
-                    class="border rounded py-4 px-5 shadow form-sp mt-5"
+                    class="border rounded py-4 px-5 shadow form-sp"
                     method="post"
                     autocomplete="on"
-                    id="form-login"
-                    name="form-login"
-                    action="login_check.php"
+                    id="form-registrazione"
+                    name="form-registrazione"
+                    action="registrazione_check.php"
                     novalidate>
-
-                    <div class="mb-4">
-                        <label for="email-login" class="form-label">
-                            Indirizzo e-mail: <span class="text-danger">*</span></label>
+                    <div class="mb-3">
+                        <label for="nome-registrazione" class="form-label">
+                            Nome: <span class="text-danger">*</span></label>
                         <input
-                            type="email"
-                            name="email-login"
-                            id="email-login"
+                            type="text"
+                            id="nome-registrazione"
+                            name="nome-registrazione"
                             class="form-control"
                             required />
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label" for="password-login">Password: <span class="text-danger">*</span></label>
+                        <label for="cognome-registrazione" class="form-label">
+                            Cognome: <span class="text-danger">*</span></label>
                         <input
-                            type="password"
-                            name="password-login"
-                            id="password-login"
+                            type="text"
+                            id="cognome-registrazione"
+                            name="cognome-registrazione"
                             class="form-control"
                             required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email-registrazione" class="form-label">
+                            Indirizzo e-mail: <span class="text-danger">*</span></label>
+                        <input
+                            type="email"
+                            name="email-registrazione"
+                            id="email-registrazione"
+                            class="form-control"
+                            required />
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md mb-4">
+                            <label class="form-label" for="password1-registrazione">Password: <span class="text-danger">*</span></label>
+                            <input
+                                type="password"
+                                name="password1-registrazione"
+                                id="password1-registrazione"
+                                class="form-control"
+                                required />
+                        </div>
+
+                        <div class="col-12 col-md mb-4">
+                            <label class="form-label" for="password2-registrazione">Conferma password: <span class="text-danger">*</span></label>
+                            <input
+                                type="password"
+                                name="password2-registrazione"
+                                id="password2-registrazione"
+                                class="form-control"
+                                required />
+                        </div>
                     </div>
 
                     <!-- input di conferma per la pagina successiva -->
@@ -188,8 +219,8 @@ loginTRUE("Location: ../../index.php");
                             <button
                                 class="btn btn-primary bottone-submit-form"
                                 type="submit"
-                                id="conferma-login">
-                                Accedi
+                                id="conferma-registrazione">
+                                Registrati
                             </button>
                         </div>
                         <div class="col-auto">
@@ -218,7 +249,6 @@ loginTRUE("Location: ../../index.php");
         </div>
     </footer>
 
-
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -228,7 +258,6 @@ loginTRUE("Location: ../../index.php");
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous">
     </script>
-
 
     <script src="../../src/js/redirect.js"></script>
 </body>
