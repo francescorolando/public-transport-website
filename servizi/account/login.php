@@ -148,7 +148,7 @@ loginTRUE("Location: ../../index.php");
 
         <div class="row justify-content-center mb-5" id="container-form-login">
             <div class="col col-md-5">
-                <h2 class="colore-principale-testo titolo-sp">Bentornato!</h2>
+                <h2 class="colore-principale-testo titolo-sp mb-3">Bentornato!</h2>
                 <p class="colore-testo paragrafo-sp">Compila i campi di seguito e accedi al tuo profilo.</p>
                 <form
                     class="border rounded py-4 px-5 shadow form-sp mt-5"
@@ -201,26 +201,6 @@ loginTRUE("Location: ../../index.php");
         </div>
 
     </div>
-
-    <footer class="container-fluid text-center color footer-personalizzazione mt-4">
-        <div class="row justify-content-center">
-            <div class="col-10">
-                <hr />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col"><em>Torino Bus & Tram ®</em></div>
-        </div>
-        <div class="row justify-content-center mt-3">
-            <div class="col-auto"><a href="./../../contatti.php">Contatti</a></div>
-            <div class="col-auto"><a href="#">Termini e condizioni d'uso</a></div>
-            <div class="col-auto"><a href="#">Privacy</a></div>
-        </div>
-    </footer>
-
-
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <!-- Bootstrap JS -->
     <script

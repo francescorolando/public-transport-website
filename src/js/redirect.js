@@ -8,7 +8,9 @@ function mostraMessaggioErrore() {
     if (messaggio) {
         const alertContainer = document.getElementById("alert-container");
         const alertDiv = document.createElement("div");
+
         alertDiv.classList.add("alert", "show", "showAlert");
+
         alertDiv.innerHTML = `
             <span class="fas fa-exclamation-circle"></span>
             <span class="msg">${messaggio}</span>
@@ -17,6 +19,10 @@ function mostraMessaggioErrore() {
             </div>
         `;
         alertContainer.appendChild(alertDiv);
+
+        // codice che ripulisce l'URL
+        const newUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState(null, document.title, newUrl);
 
         setTimeout(() => {
             alertDiv.classList.remove("show");

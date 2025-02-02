@@ -19,6 +19,17 @@
     text-align: center;
 }
 
+#container-form-login .titolo-sp {
+    margin-top: 100px;
+    text-align: center;
+}
+
 .paragrafo-sp {
     text-align: center;
+}
+
+#ticket-table td,
+#ticket-table th {
+    font-size: 14px;
+    vertical-align: middle;
 }

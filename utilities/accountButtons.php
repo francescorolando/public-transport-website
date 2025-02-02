@@ -16,15 +16,6 @@ function topHeader()
     }
     else
     {
-        /* $admin = "";
-        if ($_SESSION['admin'] == 1)
-        {
-            $admin = "<a class='nav-link' href=''>Admin</a>";
-        };
-        <li class='nav-item nav-button-admin'>
-            $admin
-        </li> */
-
         $topHeader = "
             <li class='nav-item nav-button-esci'>
                 <a class='nav-link' href='./servizi/account/logout_check.php'>Esci</a>
@@ -35,25 +26,23 @@ function topHeader()
     return $topHeader;
 };
 
-/*
-function footerAmministratore()
+function buttonAdmin()
 {
     if (!isset($_SESSION['nome']) or empty($_SESSION['nome']))
     {
-        $footer_amministratore = '';
+        $buttonAdmin = '';
     }
     else
     {
         if ($_SESSION['admin'])
         {
-            $footer_amministratore = "<li> <a href='admin/admin_main.php' title='Opzioni amministratore' tabindex='24'> Opzioni amministratore </a> </li>";
+            $buttonAdmin = "<div class='col-auto'><a href='servizi/admin/admin.php'>ADMIN</a></div>";
         }
         else
         {
-            $footer_amministratore = '';
+            $buttonAdmin = '';
         };
     };
 
-    return $footer_amministratore;
+    return $buttonAdmin;
 };
-*/

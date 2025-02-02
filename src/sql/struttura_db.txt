@@ -1,0 +1,79 @@
+STRUTTURA DATABASE
+
+TABELLA DEI PRODOTTI --------------------
+
+    Progetto vecchio:
+
+            -- Struttura della tabella `servizi`
+            --
+
+            CREATE TABLE `servizi` (
+            `id` int(11) NOT NULL,
+            `nome` varchar(30) NOT NULL,
+            `tipo` varchar(30) NOT NULL,
+            `prezzo` decimal(10,2) NOT NULL,
+            `specifiche` tinytext NOT NULL,
+            `disponibilita` int(11) NOT NULL
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+            --
+            -- Dump dei dati per la tabella `servizi`
+            --
+
+            INSERT INTO `servizi` (`id`, `nome`, `tipo`, `prezzo`, `specifiche`, `disponibilita`) VALUES
+            (1, 'Singolo', 'Biglietto', '1.70', 'Valido per 100 minuti dal momento della prima convalida e da convalidare ogni qualvolta si cambi mezzo.', 400),
+            (2, 'Mezza giornata', 'Biglietto', '3.40', 'Valido per 6 ore dal momento della prima convalida e da convalidare ogni qualvolta si cambi mezzo.', 400),
+            (3, 'Giornaliero', 'Biglietto', '5.20', 'Valido per 24 ore dal momento della prima convalida e da convalidare ogni qualvolta si cambi mezzo.', 400),
+            (4, 'Settimanale', 'Abbonamento', '12.00', 'Valido fino alle ore 23:59 della domenica della settimana in cui si convalida il titolo.', 200),
+            (5, 'Mensile', 'Abbonamento', '38.00', 'Valido per 30 giorni dal momento della convalida.', 200),
+            (6, 'Annuale', 'Abbonamento', '310.00', 'Valido per 365 giorni dal momento in cui si acquista il titolo.', 200),
+            (7, 'Ticket linea turistica', 'Ticket linea turistica', '35.00', 'Valido esclusivamente per la nostra linea turistica.', 40);
+
+
+    Struttura progetto aggiornato:
+
+        servizi (
+            id, nome, tipo, prezzo, descrizione, disponibilita
+        )
+
+
+TABELLA DEGLI UTENTI --------------------
+
+    Progetto vecchio:
+
+        -- Struttura della tabella `utenti`
+        --
+
+        CREATE TABLE `utenti` (
+        `email` varchar(50) NOT NULL,
+        `nome` varchar(30) NOT NULL,
+        `cognome` varchar(30) NOT NULL,
+        `password` varchar(30) NOT NULL,
+        `questionario` tinyint(1) NOT NULL DEFAULT 0,
+        `admin` tinyint(1) NOT NULL DEFAULT 0,
+        `id` int(11) NOT NULL
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+        --
+        -- Dump dei dati per la tabella `utenti`
+        --
+
+        INSERT INTO `utenti` (`email`, `nome`, `cognome`, `password`, `questionario`, `admin`, `id`) VALUES
+        ('admin1@tbt.it', 'ADMIN1', '', '123456', 0, 1, 1),
+        ('admin2@tbt.it', 'ADMIN2', '', '654321', 0, 1, 2),
+        ('francesco@mail.com', 'Francesco ', 'Rolando', 'francesco', 0, 0, 3),
+        ('valentina@mail.com', 'Valentina', 'Zaina', 'valentina', 0, 0, 4);
+    
+    
+    Struttura progetto aggiornato:
+
+        utenti (
+            id, nome, cognome, email, password
+        )
+
+
+TABELLA DEI MESSAGGI (eventualmente) --------------------
+
+        messaggi (
+            nome, cognome, mail, frequenza_utilizzo, messaggio
+        )

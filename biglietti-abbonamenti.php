@@ -1,6 +1,9 @@
 <?php
 session_start();
 include './utilities/accountButtons.php';
+include './utilities/funzioni.php';
+
+loginFALSE("Location: ./servizi/account/login.php?m_r=Devi prima effettuare il login.")
 ?>
 
 <!DOCTYPE html>
@@ -194,7 +197,7 @@ include './utilities/accountButtons.php';
                 <h4 class="colore-principale-testo">Acquista compilando il form</h4>
                 <p class="colore-testo">Una volta terminato, conferma e procedi al pagamento.</p>
                 <form
-                    action="index.php?m_r=Prenotazione avvenuta con successo!"
+                    action="index.php?m_r=Acquisto avvenuto con successo!"
                     class="border rounded py-4 px-5 shadow"
                     method="post"
                     autocomplete="on"
@@ -294,6 +297,7 @@ include './utilities/accountButtons.php';
             <div class="col-auto"><a href="contatti.php">Contatti</a></div>
             <div class="col-auto"><a href="#">Termini e condizioni d'uso</a></div>
             <div class="col-auto"><a href="#">Privacy</a></div>
+            <?= buttonAdmin() ?>
         </div>
     </footer>
 

@@ -241,23 +241,6 @@ include './utilities/accountButtons.php';
         </div>
     </div>
 
-    <!-- Footer -->
-    <!-- <footer class="container-fluid text-center color footer-personalizzazione footer-personalizzazione-home mt-4">
-            <div class="row justify-content-center">
-                <div class="col-10">
-                    <hr />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col"><em>Torino Bus & Tram ®</em></div>
-            </div>
-            <div class="row justify-content-center mt-3">
-                <div class="col-auto"><a href="contatti.php">Contatti</a></div>
-                <div class="col-auto"><a href="#">Termini e condizioni d'uso</a></div>
-                <div class="col-auto"><a href="#">Privacy</a></div>
-            </div>
-        </footer> -->
-
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 

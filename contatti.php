@@ -291,6 +291,7 @@ include './utilities/accountButtons.php';
             <div class="col-auto"><a href="contatti.php">Contatti</a></div>
             <div class="col-auto"><a href="#">Termini e condizioni d'uso</a></div>
             <div class="col-auto"><a href="#">Privacy</a></div>
+            <?= buttonAdmin() ?>
         </div>
     </footer>
 
