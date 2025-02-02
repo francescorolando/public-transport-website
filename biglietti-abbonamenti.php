@@ -156,17 +156,17 @@ loginFALSE("Location: ./servizi/account/login.php?m_r=Devi prima effettuare il l
                 <h4 class="colore-principale-testo mb-3">Biglietti</h4>
                 <ul class="colore-testo">
                     <li class="mb-3">
-                        <strong> Singolo - € 1,70 </strong> <br />
+                        <strong> Singolo - € 2,00 </strong> <br />
                         <em>Valido per 100 minuti dal momento della convalida e da convalidare ogni qualvolta si
                             cambi mezzo.</em>
                     </li>
                     <li class="mb-3">
-                        <strong> Mezza giornata - € 3,40 </strong> <br />
+                        <strong> Mezza giornata - € 4,00 </strong> <br />
                         <em>Valido per 6 ore dal momento della prima convalida e da convalidare ogni qualvolta si
                             cambi mezzo.</em>
                     </li>
                     <li class="mb-3">
-                        <strong> Giornaliero - € 5,20 </strong> <br />
+                        <strong> Giornaliero - € 6,00 </strong> <br />
                         <em>Valido per 24 ore dal momento della convalida e da convalidare ogni qualvolta si cambi
                             mezzo.</em>
                     </li>

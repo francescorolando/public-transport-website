@@ -60,13 +60,13 @@ function calcoloPrezzoTotale() {
     } else {
         switch (ticket) {
             case "singolo":
-                assegnaPrezzo(1.7);
+                assegnaPrezzo(2);
                 break;
             case "mezza-giornata":
-                assegnaPrezzo(3.4);
+                assegnaPrezzo(4);
                 break;
             case "giornaliero":
-                assegnaPrezzo(5.2);
+                assegnaPrezzo(6);
                 break;
             case "settimanale":
                 assegnaPrezzo(12);
@@ -100,7 +100,15 @@ function validaFormTicket(evento) {
     console.log(quantita);
 
     // controlla che non ci siano campi vuoti
-    if (mail === "" || mail === null || ticket === "" || ticket === null || ticket === 0 || quantita === "" || quantita === null) {
+    if (
+        mail === "" ||
+        mail === null ||
+        ticket === "" ||
+        ticket === null ||
+        ticket === 0 ||
+        quantita === "" ||
+        quantita === null
+    ) {
         window.alert("Per favore, compila tutti i campi!");
         $("#email-ticket").focus();
         evento.preventDefault();
@@ -119,7 +127,14 @@ function validaFormTicket(evento) {
     }
 
     // controlla che si selezioni un tipo valido di biglietto/abbonamento
-    if (ticket != "singolo" && ticket != "mezza-giornata" && ticket != "giornaliero" && ticket != "settimanale" && ticket != "mensile" && ticket != "annuale") {
+    if (
+        ticket != "singolo" &&
+        ticket != "mezza-giornata" &&
+        ticket != "giornaliero" &&
+        ticket != "settimanale" &&
+        ticket != "mensile" &&
+        ticket != "annuale"
+    ) {
         window.alert("Per favore, seleziona una tipologia valida!");
         $("#select-tipo-ticket").focus();
         evento.preventDefault();
