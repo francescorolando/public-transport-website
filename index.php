@@ -220,7 +220,7 @@ include './utilities/accountButtons.php';
         ?>
         <div class="row justify-content-end mb-4">
             <div class="col col-md-9 col-lg-7">
-                <h1><span>T</span>orino <span>B</span>us & <span>T</span>tram</h1>
+                <h1><span>T</span>orino <span>B</span>us & <span>T</span>ram</h1>
             </div>
         </div>
         <div class="row justify-content-end mb-4">

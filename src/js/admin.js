@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         row.insertCell().textContent = ticket.disponibilita;
 
                         // inserimento del pulsante MODIFICA
-                        // Cella con il bottone "Modifica"
                         const editCell = row.insertCell();
                         const editButton = document.createElement("button");
                         editButton.textContent = "Modifica";

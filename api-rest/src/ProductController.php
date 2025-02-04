@@ -27,7 +27,7 @@ class ProductController
         // se non trovo un prodotto, cambio il codice e inserisco un messaggio
         if (! $product)
         {
-            http_response_code(404);
+            http_response_code(404); // risorsa non trovata
             echo json_encode(["message" => "ticket non trovato", "code" => 404]);
             return;
         }
@@ -55,7 +55,7 @@ class ProductController
                 // se la variabile non è vuota (ci sono errori): 
                 if (! empty($errors))
                 {
-                    http_response_code(422);
+                    http_response_code(422); // unprocessable entity
                     echo json_encode(["errors" => $errors, "code" => 422]);
                     break;
                 }
@@ -81,7 +81,7 @@ class ProductController
 
                 // gestione degli altri metodi http -> permessi solamente GET, PATCH e DELETE 
             default:
-                http_response_code(405);
+                http_response_code(405); // method not allowed
                 header("Allow: GET, PATCH, DELETE");
                 echo json_encode(["message" => "Metodo non permesso", "code" => 405]); // dettagli relativi all'errore
         }
@@ -111,7 +111,7 @@ class ProductController
                 // se la variabile non è vuota (ci sono errori): 
                 if (! empty($errors))
                 {
-                    http_response_code(422);
+                    http_response_code(422); // unprocessable entity
                     echo json_encode(["errors" => $errors, "code" => 422]); // mando gli errori come json
                     break;
                 }
@@ -120,7 +120,7 @@ class ProductController
                 $id = $this->gateway->create($data);
 
                 // risposta in JSON per l'avvenuta creazione del prodotto
-                http_response_code(201); // codice da utilizzare per l'inserimento di un nuovo record
+                http_response_code(201); // codice da utilizzare per l'inserimento di un nuovo record "CREATED"
                 echo json_encode([
                     "message" => "prodotto creato",
                     "id" => $id
@@ -129,7 +129,7 @@ class ProductController
 
                 // gestione degli altri metodi http -> permessi solamente GET e POST
             default:
-                http_response_code(405);
+                http_response_code(405); // method not allowed
                 header("Allow: GET, POST"); // aggiungo questa linea all'header http
                 echo json_encode(["message" => "Metodo non permesso", "code" => 405]);
         }
@@ -140,6 +140,26 @@ class ProductController
     private function getValidationErrors(array $data, bool $is_new = true): array // aggiungo un nuovo parametro per capire se si tratta di un nuovo record
     {
         $errors = [];
+
+        /* echo var_dump($data["nome"]);
+        echo var_dump($data["tipo"]);
+        echo var_dump($data["prezzo"]);
+        echo var_dump($data["descrizione"]);
+        echo var_dump($data["disponibilita"]);
+        echo "\n";
+
+        echo "nome:" . json_encode(gettype($data['nome']));
+        echo "\n";
+        echo "tipo:" . json_encode(gettype($data['tipo']));
+        echo "\n";
+        echo "prezzo:" . json_encode(gettype($data['prezzo']));
+        echo "\n";
+        echo "descrizione:" . json_encode(gettype($data['descrizione']));
+        echo "\n";
+        echo "disponibilita:" . json_encode(gettype($data['disponibilita']));
+        echo "\n";
+        echo "\n"; */
+
 
         if ($is_new && empty($data["nome"]))
         { // validazione "nome"
@@ -194,22 +214,9 @@ class ProductController
             {
                 $errors[] = "tipo deve avere al massimo 50 caratteri";
             }
-        }
-
-        // PREZZO
-        if (isset($data["prezzo"]))
-        {
-            if (!preg_match("/^\d+$/", $data["prezzo"])) // verifico che sia un numero intero
+            if ($data['tipo'] !== "Biglietto" && $data['tipo'] !== "Abbonamento")
             {
-                $errors[] = "prezzo deve essere un numero intero";
-            }
-            else
-            {
-                $prezzo = intval($data["prezzo"]); // converto in intero
-                if ($prezzo < 0)
-                {
-                    $errors[] = "prezzo non può essere negativo";
-                }
+                $errors[] = "tipo può essere solamente Biglietto o Abbonamento";
             }
         }
 
@@ -226,9 +233,32 @@ class ProductController
             }
         }
 
+        // PREZZO
+        // valori non ok -> 0, "0", vuoto
+        // valori ok -> 1, "1"
+        if (isset($data["prezzo"]))
+        {
+            if (!preg_match("/^\d+$/", $data["prezzo"])) // verifico che sia un numero intero
+            {
+                $errors[] = "prezzo deve essere un numero intero";
+            }
+            else
+            {
+                $prezzo = intval($data["prezzo"]); // converto in intero
+                if ($prezzo < 0)
+                {
+                    $errors[] = "prezzo non può essere negativo";
+                }
+            }
+        }
+
         // DISPONIBILITA
+        // valori non ok -> 0, "0", vuoto
+        // valori ok -> 1, "1"
         if (isset($data["disponibilita"]))
         {
+            // TODO: possibile correzione
+            // (filter_var($int, FILTER_VALIDATE_INT)!== false)
             if (!filter_var($data["disponibilita"], FILTER_VALIDATE_INT)) // verifico che sia un intero
             {
                 $errors[] = "disponibilita deve essere un numero intero";

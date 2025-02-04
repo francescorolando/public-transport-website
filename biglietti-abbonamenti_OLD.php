@@ -3,10 +3,7 @@ session_start();
 include './utilities/accountButtons.php';
 include './utilities/funzioni.php';
 
-loginFALSE("Location: ./servizi/account/login.php?m_r=Devi prima effettuare il login.");
-
-$email_utente = $_SESSION['email'];
-
+loginFALSE("Location: ./servizi/account/login.php?m_r=Devi prima effettuare il login.")
 ?>
 
 <!DOCTYPE html>
@@ -216,7 +213,6 @@ $email_utente = $_SESSION['email'];
                             id="email-ticket"
                             required
                             class="form-control"
-                            value="<?= $email_utente ?>"
                             required />
                     </div>
 
