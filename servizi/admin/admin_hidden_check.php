@@ -79,10 +79,10 @@ switch ($conferma)
 
         // riempire tabella
         $sql = "INSERT INTO `ticket` (`id`, `nome`, `tipo`, `prezzo`, `descrizione`, `disponibilita`) VALUES
-                (1, 'Singolo', 'Biglietto', 2, 'Valido per 100 minuti dal momento della prima convalida e da convalidare ogni qualvolta si cambi mezzo.', 400),
-                (2, 'Mezza giornata', 'Biglietto', 4, 'Valido per 6 ore dal momento della prima convalida e da convalidare ogni qualvolta si cambi mezzo.', 400),
-                (3, 'Giornaliero', 'Biglietto', 6, 'Valido per 24 ore dal momento della prima convalida e da convalidare ogni qualvolta si cambi mezzo.', 400),
-                (4, 'Settimanale', 'Abbonamento', 12, 'Valido fino alle ore 23:59 della domenica della settimana in cui si convalida il titolo.', 200),
+                (1, 'Singolo', 'Biglietto', 1.7, 'Valido per 100 minuti dal momento della prima convalida e da convalidare ogni qualvolta si cambi mezzo.', 400),
+                (2, 'Mezza giornata', 'Biglietto', 4.5, 'Valido per 6 ore dal momento della prima convalida e da convalidare ogni qualvolta si cambi mezzo.', 400),
+                (3, 'Giornaliero', 'Biglietto', 7.9, 'Valido per 24 ore dal momento della prima convalida e da convalidare ogni qualvolta si cambi mezzo.', 400),
+                (4, 'Settimanale', 'Abbonamento', 17, 'Valido fino alle ore 23:59 della domenica della settimana in cui si convalida il titolo.', 200),
                 (5, 'Mensile', 'Abbonamento', 38, 'Valido per 30 giorni dal momento della convalida.', 200),
                 (6, 'Annuale', 'Abbonamento', 310, 'Valido per 365 giorni dal momento in cui si acquista il titolo.', 200);";
         $stmt = $connessione->query($sql);

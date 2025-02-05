@@ -81,7 +81,7 @@ loginFALSE("Location: ./servizi/account/login.php?m_r=Devi prima effettuare il l
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="biglietti-abbonamenti.php">
+                                <a class="dropdown-item" href="ticket.php">
                                     Biglietti e abbonamenti
                                 </a>
                             </li>

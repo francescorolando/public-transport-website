@@ -77,7 +77,7 @@ include './utilities/accountButtons.php';
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="biglietti-abbonamenti.php">
+                                <a class="dropdown-item" href="ticket.php">
                                     Biglietti e abbonamenti
                                 </a>
                             </li>

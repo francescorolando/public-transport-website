@@ -259,7 +259,7 @@ class ProductController
         {
             // TODO: possibile correzione
             // (filter_var($int, FILTER_VALIDATE_INT)!== false)
-            if (!filter_var($data["disponibilita"], FILTER_VALIDATE_INT)) // verifico che sia un intero
+            if (!preg_match("/^\d+$/", $data["disponibilita"])) // verifico che sia un intero
             {
                 $errors[] = "disponibilita deve essere un numero intero";
             }

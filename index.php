@@ -190,7 +190,7 @@ include './utilities/accountButtons.php';
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="biglietti-abbonamenti.php">
+                                <a class="dropdown-item" href="ticket.php">
                                     Biglietti e abbonamenti
                                 </a>
                             </li>
@@ -233,7 +233,7 @@ include './utilities/accountButtons.php';
         </div>
         <div class="row justify-content-end">
             <div class="col col-md-9 col-lg-7 container-bottoni-home">
-                <a href="biglietti-abbonamenti.php" class="btn btn-primary btn-lg px-4 gap-3">
+                <a href="ticket.php" class="btn btn-primary btn-lg px-4 gap-3">
                     Biglietti e abbonamenti
                 </a>
                 <a href="contatti.php" class="btn btn-outline-secondary btn-lg px-4"> Contattaci </a>

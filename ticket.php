@@ -84,7 +84,7 @@ $email_utente = $_SESSION['email'];
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="biglietti-abbonamenti.php">
+                                <a class="dropdown-item" href="ticket.php">
                                     Biglietti e abbonamenti
                                 </a>
                             </li>
@@ -122,7 +122,7 @@ $email_utente = $_SESSION['email'];
             </div>
         </div>
 
-        <div class="row justify-content-center mb-4">
+        <!-- <div class="row justify-content-center mb-4">
             <div class="col col-lg-8">
                 <p class="colore-testo">
                     [scorri fino al fondo della pagina per <a href="#container-form-ticket">compilare il form</a>]
@@ -152,9 +152,9 @@ $email_utente = $_SESSION['email'];
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
 
-        <div class="row justify-content-center mb-4">
+        <!-- <div class="row justify-content-center mb-4">
             <div class="col-12 col-lg-4">
                 <h4 class="colore-principale-testo mb-3">Biglietti</h4>
                 <ul class="colore-testo">
@@ -193,7 +193,7 @@ $email_utente = $_SESSION['email'];
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
 
         <div class="row justify-content-center mb-5" id="container-form-ticket">
             <div class="col col-lg-8">
@@ -246,11 +246,12 @@ $email_utente = $_SESSION['email'];
                                 type="number"
                                 id="quantita-ticket"
                                 name="quantita-ticket"
-                                value="1"
+                                value="0"
                                 min="1"
                                 max="10"
                                 class="form-control"
-                                required />
+                                required
+                                disabled />
                         </div>
 
                         <div class="col-12 col-md mb-4">

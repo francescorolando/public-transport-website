@@ -1,93 +1,8 @@
 $(document).ready(function () {
-    // Aggiungi l'evento di cambio al selectTipo
-    $("#select-tipo-ticket").change(handleSelectTipoChange);
-    $("#quantita-ticket").change(calcoloPrezzoTotale);
-    $("#select-ticket").change(calcoloPrezzoTotale);
-    $("#select-tipo-ticket").change(calcoloPrezzoTotale);
-    $("#form-ticket").on("reset", ripristinoOpzioniSelect);
     $("#form-ticket").on("submit", function (e) {
         validaFormTicket(e);
     });
 });
-
-// funzione che aggiunge un'opzione ad una select
-function addOption(selectId, value, text) {
-    $(selectId).append('<option value="' + value + '">' + text + "</option>");
-}
-
-// ripristina le normali opzioni della seconda select (disabled + vuota)
-function ripristinoOpzioniSelect() {
-    // console.log("ripristinoOpzioniSelect");
-    $("#select-ticket").prop("disabled", true);
-    $("#select-ticket").empty();
-    addOption("#select-ticket", "", "Scegli un'opzione");
-}
-
-// funzione per gestire la logica del cambio nel selectTipo
-function handleSelectTipoChange() {
-    // console.log("handleSelectTipoChange");
-    // abilita o disabilita il secondo select in base alla selezione
-    if ($(this).val() !== "") {
-        $("#select-ticket").prop("disabled", false);
-
-        // rimuovi tutte le opzioni attuali
-        $("#select-ticket").empty();
-        // $("#select-ticket").append("<option selected disabled>Scegli un'opzione</option>");
-
-        // aggiungi nuove opzioni in base alla selezione del primo select
-        if ($(this).val() === "1") {
-            addOption("#select-ticket", "singolo", "Singolo");
-            addOption("#select-ticket", "mezza-giornata", "Mezza giornata");
-            addOption("#select-ticket", "giornaliero", "Giornaliero");
-        } else if ($(this).val() === "2") {
-            addOption("#select-ticket", "settimanale", "Settimanale");
-            addOption("#select-ticket", "mensile", "Mensile");
-            addOption("#select-ticket", "annuale", "Annuale");
-        } else if ($(this).val() === "0") {
-            ripristinoOpzioniSelect();
-        }
-    }
-}
-
-// calcola il prezzo totale dei biglietti
-function calcoloPrezzoTotale() {
-    const ticket = $("#select-ticket").val();
-    const quantita = $("#quantita-ticket").val();
-
-    if (quantita <= 0) {
-        $("#quantita-ticket").val(1);
-        $("#quantita-ticket").focus();
-    } else {
-        switch (ticket) {
-            case "singolo":
-                assegnaPrezzo(2);
-                break;
-            case "mezza-giornata":
-                assegnaPrezzo(4);
-                break;
-            case "giornaliero":
-                assegnaPrezzo(6);
-                break;
-            case "settimanale":
-                assegnaPrezzo(12);
-                break;
-            case "mensile":
-                assegnaPrezzo(38);
-                break;
-            case "annuale":
-                assegnaPrezzo(310);
-                break;
-            default:
-                $("#totale-ticket").val(0);
-        }
-    }
-
-    function assegnaPrezzo(prezzo) {
-        var totale = quantita * prezzo;
-        totale = totale.toFixed(2);
-        $("#totale-ticket").val(totale);
-    }
-}
 
 // validazione del form sui ticket
 function validaFormTicket(evento) {
@@ -154,8 +69,32 @@ function validaFormTicket(evento) {
 
 document.addEventListener("DOMContentLoaded", function () {
     const apiUrl = "./api-rest/tickets";
+    const form = document.getElementById("form-ticket");
+    const emailInput = document.getElementById("email-ticket"); // Ottieni il riferimento al campo email
     const tipoSelect = document.getElementById("select-tipo-ticket");
     const ticketSelect = document.getElementById("select-ticket");
+    const quantitaInput = document.getElementById("quantita-ticket");
+    const totaleInput = document.getElementById("totale-ticket");
+
+    form.addEventListener("reset", function () {
+        // email (con delay a causa di problemi)
+        setTimeout(() => {
+            emailInput.value = "";
+        }, 0);
+
+        // select dei ticket
+        ticketSelect.disabled = true; // disabilita la select dei ticket
+        ticketSelect.value = 0; // resetta la select dei ticket
+        ticketSelect.innerHTML = '<option value="0">Scegli un\'opzione</option>'; // Reset opzioni ticket
+
+        // quantità
+        quantitaInput.disabled = true; // disabilita l'input della quantità
+        quantitaInput.value = 0; // imposta la quantità a 0
+
+        // totalePrezzo.value = 0; // resetta il prezzo totale
+
+        emailInput.focus();
+    });
 
     // funzione per caricare i biglietti dall'API e popolare la select
     function caricaBiglietti(tipo) {
@@ -164,15 +103,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                // console.log(response.json());
                 return response.json();
             })
             .then((data) => {
-                ticketSelect.innerHTML = '<option value="0">Scegli un\'opzione</option>'; // Pulisci le opzioni precedenti
-                ticketSelect.disabled = true; // Disabilita la select finché non ci sono dati
+                ticketSelect.innerHTML = '<option value="0">Scegli un\'opzione</option>'; // pulisci le opzioni precedenti
+                ticketSelect.disabled = true; // disabilita la select finché non ci sono dati
 
                 if (data && data.length > 0) {
+                    console.log("------------------");
+                    console.log("data:");
                     console.log(data);
+                    console.log("lunghezza data: " + data.length);
                     const filteredData = data.filter((ticket) => {
                         // restituisce i ticket di quel tipo
                         // restituisce solo se disponibili
@@ -180,32 +121,47 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
 
                     console.log("------------------");
-                    console.log("------------------");
-                    console.log("------------------");
+                    console.log("filteredData:");
                     console.log(filteredData);
+                    console.log("lunghezza filteredData: " + filteredData.length);
 
                     if (filteredData.length > 0) {
                         filteredData.forEach((ticket) => {
                             const option = document.createElement("option");
-                            option.value = ticket.id; // Usa l'ID del ticket come valore
-                            option.text = ticket.nome; // Mostra il nome del ticket
+                            option.value = ticket.id; // usa l'ID del ticket come valore
+                            option.text = ticket.nome; // mostra il nome del ticket
                             ticketSelect.appendChild(option);
                         });
-                        ticketSelect.disabled = false; // Abilita la select
+                        ticketSelect.disabled = false; // abilita la select
                     } else {
-                        const option = document.createElement("option");
+                        console.log("Nessun " + tipo.toLowerCase() + " disponibile");
+                        /* const option = document.createElement("option");
                         option.text = `Nessun ${tipo} disponibile.`;
-                        ticketSelect.appendChild(option);
+                        ticketSelect.appendChild(option); */
+                        ticketSelect.innerHTML = `<option value="0">Nessun ${tipo.toLowerCase()} disponibile </option>`; // pulisci le opzioni precedenti
+                        ticketSelect.disabled = true; // disabilita la select finché non ci sono dati
                     }
                 } else {
+                    // TODO: controllare caso in cui nel db non ci sono voci
+                    console.log("NESSUN TICKET DISPONIBILE");
                     const option = document.createElement("option");
                     option.text = "Nessun ticket trovato.";
                     ticketSelect.appendChild(option);
                 }
+
+                // disabilita l'input della quantità
+                quantitaInput.disabled = true;
+                // valore predefinito del campo quantità
+                quantitaInput.value = 0;
+
+                // aggiorna la quantità massima
+                aggiornaQuantitaMassima();
+                // calcola il totale iniziale (se c'è un ticket selezionato)
+                calcolaTotale();
             })
             .catch((error) => {
                 console.error("Errore durante la richiesta:", error);
-                ticketSelect.innerHTML = '<option value="0">Scegli un\'opzione</option>';
+                ticketSelect.innerHTML = '<option value="0">Errore durante il caricamento dei dati</option>';
                 const option = document.createElement("option");
                 option.text = "Errore durante il caricamento dei ticket.";
                 ticketSelect.appendChild(option);
@@ -226,74 +182,55 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Inizializzazione: popola la select dei tipi di ticket
-    // (Opzionale: puoi anche caricare i biglietti di default al caricamento della pagina)
-    // caricaBiglietti("Biglietto"); // Carica i biglietti all'avvio per default
-});
+    // quanto il ticket cambia:
+    ticketSelect.addEventListener("change", function () {
+        quantitaInput.value = 1;
+        calcolaTotale();
+        aggiornaQuantitaMassima();
+        quantitaInput.disabled = false;
+    });
 
-/*
-document.addEventListener("DOMContentLoaded", function () {
-    // URL dell'API
-    const apiUrl = "./../../api-rest/tickets";
+    quantitaInput.addEventListener("input", calcolaTotale);
 
-    // ELENCO DEI TICKET -------------------------------------
+    function aggiornaQuantitaMassima() {
+        const ticketId = ticketSelect.value;
 
-    // utilizzo fetch() => promises
-    function caricaBiglietti() {
-        fetch(apiUrl)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then((data) => {
-                tableBody.innerHTML = ""; // svuota la tabella
-
-                // verifico la presenza dei dati
-                if (data && data.length > 0) {
-                    data.forEach((ticket) => {
-                        const row = tableBody.insertRow();
-                        row.insertCell().textContent = ticket.id;
-                        row.insertCell().textContent = ticket.nome;
-                        row.insertCell().textContent = ticket.tipo;
-                        row.insertCell().textContent = ticket.prezzo;
-                        row.insertCell().textContent = ticket.descrizione;
-                        row.insertCell().textContent = ticket.disponibilita;
-
-                        // inserimento del pulsante MODIFICA
-                        // Cella con il bottone "Modifica"
-                        const editCell = row.insertCell();
-                        const editButton = document.createElement("button");
-                        editButton.textContent = "Modifica";
-                        editButton.classList.add("btn", "btn-outline-secondary", "btn-sm", "me-2");
-                        editButton.dataset.id = ticket.id; // metodo di button che ci permette di memorizzare l'ID
-                        editCell.appendChild(editButton);
-
-                        // inserimento del pulsante ELIMINA
-                        const deleteCell = row.insertCell();
-                        const deleteButton = document.createElement("button");
-                        deleteButton.textContent = "Elimina";
-                        deleteButton.classList.add("btn", "btn-danger", "btn-sm");
-                        deleteButton.dataset.id = ticket.id; // metodo di button che ci permette di memorizzare l'ID
-                        deleteCell.appendChild(deleteButton);
-                    });
-                } else {
-                    // nel caso in cui non ci fossero dati
-                    const row = tableBody.insertRow();
-                    row.insertCell().colSpan = 6; // centro il messaggio
-                    row.textContent = "Nessun ticket trovato.";
-                }
-            })
-            .catch((error) => {
-                console.error("Errore durante la richiesta:", error);
-                //
-                tableBody.innerHTML = "";
-                const row = tableBody.insertRow();
-                row.insertCell().colSpan = 6;
-                row.textContent = "Errore durante il caricamento dei ticket.";
-            });
+        if (ticketId) {
+            fetch(apiUrl)
+                .then((response) => response.json())
+                .then((data) => {
+                    const ticket = data.find((t) => t.id == ticketId);
+                    if (ticket) {
+                        quantitaInput.max = ticket.disponibilita; // imposta il massimo in base alla disponibilità
+                    } else {
+                        quantitaInput.value = 0;
+                        quantitaInput.max = 10; // valore predefinito se il ticket non viene trovato
+                        quantitaInput.disabled = true;
+                    }
+                });
+        } else {
+            quantitaInput.max = 10; // valore predefinito se nessun ticket è selezionato
+        }
     }
 
-    caricaBiglietti(); // lancio la funzione
-});*/
+    function calcolaTotale() {
+        const ticketId = ticketSelect.value;
+        const quantita = quantitaInput.value;
+
+        if (ticketId && quantita > 0) {
+            fetch(apiUrl)
+                .then((response) => response.json())
+                .then((data) => {
+                    const ticket = data.find((t) => t.id == ticketId);
+                    if (ticket) {
+                        const totale = ticket.prezzo * quantita;
+                        totaleInput.value = totale.toFixed(2); // Mostra il totale con 2 decimali
+                    } else {
+                        totaleInput.value = 0;
+                    }
+                });
+        } else {
+            totaleInput.value = 0;
+        }
+    }
+});

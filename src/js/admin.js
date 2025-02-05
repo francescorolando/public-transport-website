@@ -26,7 +26,14 @@ document.addEventListener("DOMContentLoaded", function () {
                         row.insertCell().textContent = ticket.id;
                         row.insertCell().textContent = ticket.nome;
                         row.insertCell().textContent = ticket.tipo;
-                        row.insertCell().textContent = ticket.prezzo;
+                        // formattazione del prezzo
+                        const prezzo = parseFloat(ticket.prezzo); // converti in numero
+                        const prezzoFormattato = new Intl.NumberFormat("it-IT", {
+                            // formatta con la localizzazione italiana
+                            style: "currency",
+                            currency: "EUR",
+                        }).format(prezzo);
+                        row.insertCell().textContent = prezzoFormattato; // usa il prezzo formattato
                         row.insertCell().textContent = ticket.descrizione;
                         row.insertCell().textContent = ticket.disponibilita;
 

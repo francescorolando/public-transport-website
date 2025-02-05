@@ -198,7 +198,7 @@ adminFALSE("Location: ../../index.php");
                             <th scope="col">ID</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Tipo</th>
-                            <th scope="col">Prezzo(€)</th>
+                            <th scope="col">Prezzo</th>
                             <th scope="col">Descrizione</th>
                             <th scope="col">Disponibilità</th>
                             <th scope="col"></th>
