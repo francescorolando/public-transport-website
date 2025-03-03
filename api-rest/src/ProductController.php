@@ -171,7 +171,7 @@ class ProductController
             $errors[] = "tipo è un campo obbligatorio";
         }
 
-        if ($is_new && empty($data["prezzo"]))
+        if ($is_new && (!isset($data["prezzo"]) || $data["prezzo"] === "")) // non si accettano NULL o ""
         { // validazione "prezzo"
             $errors[] = "prezzo è un campo obbligatorio";
         }
@@ -181,7 +181,7 @@ class ProductController
             $errors[] = "descrizione è un campo obbligatorio";
         }
 
-        if ($is_new && empty($data["disponibilita"]))
+        if ($is_new && (!isset($data["disponibilita"]) || $data["disponibilita"] === "")) // non si accettano NULL o "" -> disponibilità può essere 0 o "0" 
         { // validazione "disponibilita"
             $errors[] = "disponibilita è un campo obbligatorio";
         }
@@ -234,27 +234,29 @@ class ProductController
         }
 
         // PREZZO
-        // valori non ok -> 0, "0", vuoto
-        // valori ok -> 1, "1"
         if (isset($data["prezzo"]))
         {
-            if (!preg_match("/^\d+$/", $data["prezzo"])) // verifico che sia un numero intero
+            if (!preg_match("/^\d+(.\d{1})?$/", $data["prezzo"])) // verifico che sia un numero decimal(10,1)
             {
-                $errors[] = "prezzo deve essere un numero intero";
+                $errors[] = "prezzo deve essere un numero intero o decimale (1 cifra dopo la virgola)";
             }
             else
             {
                 $prezzo = intval($data["prezzo"]); // converto in intero
+
                 if ($prezzo < 0)
                 {
                     $errors[] = "prezzo non può essere negativo";
+                }
+
+                if ($prezzo == 0)
+                {
+                    $errors[] = "prezzo non può essere uguale a 0";
                 }
             }
         }
 
         // DISPONIBILITA
-        // valori non ok -> 0, "0", vuoto
-        // valori ok -> 1, "1"
         if (isset($data["disponibilita"]))
         {
             // TODO: possibile correzione

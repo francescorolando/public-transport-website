@@ -92,7 +92,20 @@ class ProductGateway
         $stmt->bindValue(":tipo", (empty($new["tipo"])) || (!isset($new["tipo"])) ? $current["tipo"] : $new["tipo"], PDO::PARAM_STR);
         $stmt->bindValue(":prezzo", (empty($new["prezzo"])) || (!isset($new["prezzo"])) ? $current["prezzo"] : $new["prezzo"], PDO::PARAM_STR);
         $stmt->bindValue(":descrizione", (empty($new["descrizione"])) || (!isset($new["descrizione"])) ? $current["descrizione"] : $new["descrizione"], PDO::PARAM_STR);
-        $stmt->bindValue(":disponibilita", (empty($new["disponibilita"])) || (!isset($new["disponibilita"])) ? $current["disponibilita"] : $new["disponibilita"], PDO::PARAM_STR);
+        $stmt->bindValue(":disponibilita", (!isset($new["disponibilita"]) || $new["disponibilita"] === "" || $new["disponibilita"] === null) ? $current["disponibilita"] : $new["disponibilita"], PDO::PARAM_STR);
+
+        // Gestione ESPLICITA del caso in cui disponibilita sia 0 o "0"
+        if (isset($new["disponibilita"]) && ($new["disponibilita"] !== "" && $new["disponibilita"] !== null))
+        {
+            $disponibilita = $new["disponibilita"];
+        }
+        else
+        {
+            $disponibilita = $current["disponibilita"];
+        }
+
+
+        // $stmt->bindValue(":disponibilita", (empty($new["disponibilita"])) || (!isset($new["disponibilita"])) ? $current["disponibilita"] : $new["disponibilita"], PDO::PARAM_STR);
 
         // l'ID rimane quello corrente
         $stmt->bindValue(":id", $current["id"], PDO::PARAM_INT);

@@ -127,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
             body: JSON.stringify(Object.fromEntries(formData.entries())),
         })
             .then((response) => {
+                console.log(response);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }

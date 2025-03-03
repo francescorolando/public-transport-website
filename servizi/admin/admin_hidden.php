@@ -150,7 +150,7 @@ adminFALSE("Location: ../../index.php");
     <div class="container col">
         <div class="row justify-content-center mb-3">
             <div class="col col-md-5">
-                <h2 class="colore-principale-testo titolo-sp mb-5">Sezione amministratore NASCOSTE</h2>
+                <h2 class="colore-principale-testo titolo-sp mb-5">Sezione amministratore NASCOSTA</h2>
                 <p class="colore-testo paragrafo-sp">Utilizza le funzioni qui di seguito per operare sui ticket.</p>
             </div>
         </div>

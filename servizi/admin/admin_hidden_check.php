@@ -16,13 +16,11 @@ $connessione = $database->getConnection();
 if (
     !isset($_POST['conferma']) ||
     empty($_POST['conferma']) ||
-    $_POST['conferma'] !== 1 ||
-    $_POST['conferma'] !== 2 ||
-    $_POST['conferma'] !== 3 ||
-    $_POST['conferma'] !== 4
+    ($_POST['conferma'] != 1 && $_POST['conferma'] != 2 && $_POST['conferma'] != 3 && $_POST['conferma'] != 4)
 )
 {
-    // header("Location: admin_hidden.php");
+    header("Location: admin_hidden.php");
+    exit;
 }
 
 $conferma = $_POST['conferma'];
