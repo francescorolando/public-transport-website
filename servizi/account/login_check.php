@@ -4,7 +4,7 @@ include "../../utilities/funzioni.php";
 require_once './../../utilities/Database.php';
 
 // connessione al DB
-$database = new Database("localhost", "tbt", "root", "");
+$database = new Database("localhost", "tbt", "mysqllocal", "localpasswd");
 $connessione = $database->getConnection();
 
 // fa in modo che l'utente debba prima passare da "login.php"

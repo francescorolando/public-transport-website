@@ -10,7 +10,7 @@ loginFALSE("Location: ../../index.php");
 adminFALSE("Location: ../../index.php");
 
 // connessione al DB
-$database = new Database("localhost", "tbt", "root", "");
+$database = new Database("localhost", "tbt", "mysqllocal", "localpasswd");
 $connessione = $database->getConnection();
 
 if (
@@ -27,7 +27,7 @@ $conferma = $_POST['conferma'];
 
 switch ($conferma)
 {
-        // RIPRISTINO TABELLA UTENTI
+    // RIPRISTINO TABELLA UTENTI
     case 1:
         // svuotare tabella
         $sql = "TRUNCATE TABLE `utenti`";
@@ -64,7 +64,7 @@ switch ($conferma)
         break;
 
 
-        // RIPRISTINO TABELLA TICKET
+    // RIPRISTINO TABELLA TICKET
     case 2:
         // svuotare tabella
         $sql = "TRUNCATE TABLE `ticket`";
@@ -105,7 +105,7 @@ switch ($conferma)
         break;
 
 
-        // AUTO_INCREMENT UTENTI
+    // AUTO_INCREMENT UTENTI
     case 3:
         // selezione id più alto e creazione nuovo id
         $id;
@@ -145,7 +145,7 @@ switch ($conferma)
         break;
 
 
-        // AUTO_INCREMENT UTENTI
+    // AUTO_INCREMENT UTENTI
     case 4:
         // selezione id più alto e creazione nuovo id
         $id;
@@ -185,7 +185,7 @@ switch ($conferma)
         break;
 
 
-        // di default rimando indietro
+    // di default rimando indietro
     default:
         header("Location: admin_hidden.php?m_r=Seleziona un'opzione valida.");
 }

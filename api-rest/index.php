@@ -60,7 +60,7 @@ if (isset($parts[$resource_index + 1]))
     $id = $parts[$resource_index + 1];
 }
 
-$database = new Database("localhost", "tbt", "root", "");
+$database = new Database("localhost", "tbt", "mysqllocal", "localpasswd");
 
 $gateway = new ProductGateway($database);
 
