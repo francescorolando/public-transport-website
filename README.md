@@ -1,6 +1,4 @@
-# Torino Bus & Tram
-
-# PHP Public Transport Website Simulation
+# _Torino Bus & Tram_ - PHP Public Transport Website
 
 A public transport company website built using core PHP and MySQL. This project features user account management (registration, login, profiles), an administration panel for managing transport services, and a REST API for accessing public transport data.
 
@@ -31,15 +29,16 @@ Follow these instructions to set up the project locally for development or testi
 
 **Clone the repository:**
 
-    ```bash
-    git clone [https://github.com/francescorolando/REPOSITORY_NAME.git]
-    cd REPOSITORY_NAME
-    ```
+```bash
+git clone [https://github.com/francescorolando/REPOSITORY_NAME.git]
+cd REPOSITORY_NAME
+```
 
 ### Database Setup
 
 1.  **Create a database:** Create a new database in your MySQL server for this project (e.g., `public_transport_db`).
 2.  **Import schema:** Import the database structure and content using the provided SQL file. Locate the schema file (`src/sql/schema.sql`) and import it into your newly created database using a tool like phpMyAdmin, Adminer, or the MySQL command line.
+
     ```bash
     # Example using mysql command line:
     mysql -u YOUR_DB_USER -p YOUR_DATABASE_NAME < path/to/your/schema.sql
