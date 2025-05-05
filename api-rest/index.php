@@ -1,6 +1,7 @@
 <?php
 // utilizzata per abilitare il "strict typing" (tipizzazione rigorosa)
 declare(strict_types=1);
+require_once "../config/config.php"; // file di configurazione
 
 // DEBUGGING
 /* echo "Richiesta: " . $_SERVER["REQUEST_URI"];
@@ -60,7 +61,7 @@ if (isset($parts[$resource_index + 1]))
     $id = $parts[$resource_index + 1];
 }
 
-$database = new Database("localhost", "tbt", "mysqllocal", "localpasswd");
+$database = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD);
 
 $gateway = new ProductGateway($database);
 

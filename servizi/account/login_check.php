@@ -2,9 +2,11 @@
 session_start();
 include "../../utilities/funzioni.php";
 require_once './../../utilities/Database.php';
+require_once '../../config/config.php';
 
 // connessione al DB
-$database = new Database("localhost", "tbt", "mysqllocal", "localpasswd");
+$database = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD);
+
 $connessione = $database->getConnection();
 
 // fa in modo che l'utente debba prima passare da "login.php"

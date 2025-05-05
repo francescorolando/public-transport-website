@@ -2,6 +2,7 @@
 session_start();
 include "../../utilities/funzioni.php";
 require_once './../../utilities/Database.php';
+require_once '../../config/config.php';
 
 // l'utente deve essere loggato                                                    
 loginFALSE("Location: ../../index.php");
@@ -10,7 +11,7 @@ loginFALSE("Location: ../../index.php");
 adminFALSE("Location: ../../index.php");
 
 // connessione al DB
-$database = new Database("localhost", "tbt", "mysqllocal", "localpasswd");
+$database = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD);
 $connessione = $database->getConnection();
 
 if (

@@ -1,0 +1,5 @@
+# excluding cofig files containing DB credentials
+config/config.php
+
+# db structure
+src/sql/struttura_db.txt
